@@ -142,6 +142,7 @@ resource "aws_instance" "node_instance" {
   private_ip             = "10.0.1.11"
   key_name               = "mi_clave_ssh"
   associate_public_ip_address = true
+  user_data = file("${path.module}/installnodejs.sh")
 
   tags = {
     Name = "NodeInstance"

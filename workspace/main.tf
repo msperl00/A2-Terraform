@@ -129,7 +129,7 @@ resource "tls_private_key" "rsa" {
 
 resource "local_file" "mi_clave_ssh" {
   content  = tls_private_key.rsa.private_key_pem
-  filename = "clave"
+  filename = "clave_new"
 }
 
 # Instancia EC2 para Node.js
@@ -156,6 +156,7 @@ resource "aws_instance" "mongo_instance" {
   private_ip             = "10.0.1.10"
   key_name               = "mi_clave_ssh"
   associate_public_ip_address = true
+  user_data = file("${path.module}/installmongodb.sh")
 
   tags = {
     Name = "MongoInstance"

@@ -38,8 +38,8 @@ db.createUser({
   user: "marco",
   pwd: "password",
   roles: [
-    { role: "root", db: "admindb" },
-    { role: "restore", db: "admindb" }
+    { role: "root", db: "admin" },
+    { role: "restore", db: "admin" }
   ]
 })
 CREACION_DE_USUARIO

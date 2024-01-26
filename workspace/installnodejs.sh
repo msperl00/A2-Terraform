@@ -14,7 +14,7 @@ const username = 'marco';
 const password = 'password';
 const host = '10.0.1.10';
 const port = '27017';
-const database = 'admindb';
+const database = 'admin';
 
 // Cadena de conexión a MongoDB (URI)
 const uri = `mongodb://${username}:${password}@${host}:${port}/${database}`;
@@ -51,7 +51,6 @@ const puerto = 3000;
 app.listen(puerto, () => {
   console.log(`El servidor está escuchando en el puerto ${puerto}`);
 });
-}
 EOF
 
 cat <<'EOF' > /var/www/myapp/package.json
@@ -74,14 +73,15 @@ EOF
 
 # Actualización de repositorios y paquetes
 sudo apt update
-sudo apt upgrade -y
 
 # Instalación de Nginx y Node.js
-sudo apt install -y nginx npm
+sudo apt install -y npm
+sudo apt install -y nginx
+sudo apt install -y nodejs
 
 # Instalar la versión deseada de Node.js (reemplaza con el comando correcto si es necesario)
-curl -sL https://deb.nodesource.com/setup_18.x | sudo bash -
-sudo apt install -y nodejs
+#curl -sL https://deb.nodesource.com/setup_18.x | sudo bash -
+#sudo apt install -y nodejs
 
 # Instalación de los build essentials para la compilación de dependencias de Node.js
 sudo apt install -y build-essential
